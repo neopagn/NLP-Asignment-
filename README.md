@@ -9,7 +9,7 @@
 - Optional rule-based contract QA application
 
 ## Setup
-download the models from "https://drive.google.com/drive/folders/1_RlDPDR1jn_7lF_vh_LspDl2ePz19ChJ?usp=sharing"
+Download the models from "https://drive.google.com/drive/folders/1_RlDPDR1jn_7lF_vh_LspDl2ePz19ChJ?usp=sharing"
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
