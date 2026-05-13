@@ -1,0 +1,10 @@
+{"text": "Party B shall pay 10,000,000 VND before 05 May 2024.", "entities": [{"text": "Party B", "label": "PARTY"}, {"text": "10,000,000 VND", "label": "MONEY"}, {"text": "05 May 2024", "label": "DATE"}]}
+{"text": "If Party B delays payment, a penalty of 1% per day shall apply.", "entities": [{"text": "Party B", "label": "PARTY"}, {"text": "penalty", "label": "PENALTY"}, {"text": "1% per day", "label": "RATE"}]}
+{"text": "This agreement shall be governed by the laws of Vietnam.", "entities": [{"text": "laws of Vietnam", "label": "LAW"}]}
+{"text": "Employee shall maintain confidential information of Employer.", "entities": [{"text": "Employee", "label": "PARTY"}, {"text": "Employer", "label": "PARTY"}]}
+{"text": "Buyer shall deliver payment to Seller within 10 days.", "entities": [{"text": "Buyer", "label": "PARTY"}, {"text": "Seller", "label": "PARTY"}, {"text": "within 10 days", "label": "DATE"}]}
+{"text": "The Tenant shall pay rent to the Landlord by the due date.", "entities": [{"text": "Tenant", "label": "PARTY"}, {"text": "Landlord", "label": "PARTY"}, {"text": "due date", "label": "DATE"}]}
+{"text": "The late fee will be 5% if payment is overdue.", "entities": [{"text": "late fee", "label": "PENALTY"}, {"text": "5%", "label": "RATE"}]}
+{"text": "The Contractor shall pay USD 2,500 to the Client.", "entities": [{"text": "Contractor", "label": "PARTY"}, {"text": "USD 2,500", "label": "MONEY"}, {"text": "Client", "label": "PARTY"}]}
+{"text": "The effective date of this Agreement is 01 January 2025.", "entities": [{"text": "effective date", "label": "DATE"}, {"text": "01 January 2025", "label": "DATE"}]}
+{"text": "Any dispute shall be resolved under the jurisdiction of Singapore.", "entities": [{"text": "jurisdiction of Singapore", "label": "LAW"}]}

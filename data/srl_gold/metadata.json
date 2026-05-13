@@ -1,0 +1,11 @@
+{
+  "source": "C:\\Users\\Your mom\\Documents\\New project\\data\\srl_annotation_candidates.jsonl",
+  "seed": 13,
+  "total_examples": 120,
+  "splits": {
+    "train": 84,
+    "dev": 18,
+    "test": 18
+  },
+  "note": "Rows with review_status='gold' and at least one role are included. Splits are grouped by clause_id to reduce leakage."
+}

@@ -1,0 +1,800 @@
+\documentclass[oneside,final]{hcmut-report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage[protrusion=false]{microtype}
+\usepackage{graphicx, caption}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{multirow,multicol}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{lastpage}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{chngcntr}
+
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 0}
+}
+
+\definecolor{blacktext}{RGB}{0,0,0}
+\definecolor{backgroundcolor}{rgb}{1,1,1}
+
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\result}[1]{\fbox{#1}}
+
+\lstdefinelanguage{Python}{
+  morekeywords={
+    and, as, assert, async, await, break, class, continue, def, del, elif, else, except,
+    False, finally, for, from, global, if, import, in, is, lambda, None, nonlocal, not,
+    or, pass, raise, return, True, try, while, with, yield, self
+  },
+  keywordstyle=\color{black}\bfseries,
+  morekeywords=[2]{bool, bytes, bytearray, complex, dict, float, frozenset, int, list, object, set, str, tuple},
+  keywordstyle=[2]\color{black}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=true,
+  comment=[l]{\#},
+  commentstyle=\color{black}\ttfamily,
+  stringstyle=\color{black}\ttfamily,
+  morestring=[b]',
+  morestring=[b]",
+}
+
+\lstset{
+  language=Python,
+  backgroundcolor=\color{backgroundcolor},
+  basicstyle=\ttfamily\footnotesize\color{black},
+  numbers=left,
+  numberstyle=\tiny\color{black},
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=2,
+  showspaces=false,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=true,
+  frame=single,
+  rulecolor=\color{black}
+}
+
+\AtBeginDocument{\counterwithin{lstlisting}{section}}
+
+\setreporttitle{BÁO CÁO BÀI TẬP LỚN}
+\setcoursename{MÔN HỌC: XỬ LÝ NGÔN NGỮ TỰ NHIÊN}
+\settopicname{Legal Contract Information Extraction and Semantic Analysis}
+\setteachername{Thầy Nam Dương Hồ}
+\setstudentlist{
+Nguyễn Văn Nhật Tân -- 2213064\\
+Thành viên 2 -- MSSV\\
+Thành viên 3 -- MSSV\\
+Thành viên 4 -- MSSV
+}
+\setreportdate{Thành phố Hồ Chí Minh, tháng 5 năm 2026}
+
+\begin{document}
+\fancyfoot{}
+\coverpage\clearpage
+
+\fancyfoot[L]{\scriptsize \ttfamily Bài tập lớn Xử lý ngôn ngữ tự nhiên\Học kỳ 2 -- Năm học 2025--2026}
+\fancyfoot[R]{\scriptsize \ttfamily Trang {\thepage}/\pageref{LastPage}}
+
+\tableofcontents
+\thispagestyle{fancy}
+\clearpage
+
+\setcounter{page}{1}
+
+\part*{Tóm tắt}
+Báo cáo này trình bày một pipeline hoàn chỉnh cho bài toán \textbf{trích xuất thông tin và phân tích ngữ nghĩa hợp đồng pháp lý tiếng Anh}. Hệ thống xử lý văn bản hợp đồng thô và chuyển đổi thành các biểu diễn có cấu trúc, bao gồm tách mệnh đề, gán nhãn cụm danh từ, phân tích phụ thuộc cú pháp, nhận diện thực thể pháp lý, gán vai nghĩa, phân loại ý định điều khoản và hỏi đáp hợp đồng dựa trên luật.
+
+Hệ thống kết hợp các luật pháp lý có khả năng diễn giải với các mô hình học máy. Đối với Semantic Role Labeling, nhóm fine-tune mô hình Legal-BERT theo hướng predicate-conditioned token classification từ tập annotation đã được kiểm tra thủ công. Đối với intent classification, nhóm fine-tune mô hình Legal-BERT sequence classification và so sánh với baseline TF-IDF kết hợp Logistic Regression. Pipeline cuối cùng sinh đầy đủ output cho 121 clause và cho thấy mô hình Legal-BERT cải thiện so với baseline trong cả SRL và intent classification.
+\clearpage
+
+% =========================================================
+\part{Tiền xử lý và phân tích cú pháp}
+\label{assignment_1}
+
+\section{Tổng quan dữ liệu}
+
+Dự án sử dụng hai nguồn dữ liệu hợp đồng tiếng Anh. Nguồn thứ nhất là Atticus Open Contract Dataset AOK Beta, có liên quan đến hướng nghiên cứu contract understanding. Nguồn thứ hai là Business Contract Dataset của Megha Rajeev, chứa các văn bản hợp đồng phù hợp cho bài toán trích xuất thông tin.
+
+\section{Tách mệnh đề}
+\label{task_1.1}
+
+\subsection{Mục tiêu}
+Hợp đồng pháp lý thường có câu dài, nhiều mệnh đề phụ, điều kiện, liệt kê và định nghĩa lồng nhau. Nếu đưa trực tiếp các câu dài này vào dependency parser, NER hoặc SRL, chất lượng phân tích có thể giảm. Vì vậy, mục tiêu của bước tách mệnh đề là chuyển văn bản hợp đồng thô thành các đơn vị clause có ý nghĩa độc lập tương đối.
+
+Input và output của bước này:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Input & \code{input/raw_contracts.txt} \\ \hline
+Output & \code{output/clauses.txt} \\ \hline
+Output truy vết & \code{output/clauses_context.json} \\ \hline
+\end{tabular}
+\caption{Input và output của bước tách mệnh đề}
+\end{table}
+
+\subsection{Tiền xử lý văn bản pháp lý}
+Trước khi tách clause, văn bản hợp đồng được làm sạch để loại bỏ artifact từ PDF, source marker, placeholder, checkbox và heading lặp lại. Tuy nhiên, hệ thống tránh xóa các cấu trúc pháp lý quan trọng. Các nhãn ngoặc như \code{(a)} hoặc \code{(j)} có thể là nhãn của definition item, nên không bị loại bỏ tùy tiện.
+
+Hệ thống cũng bảo vệ các abbreviation pháp lý hoặc địa chỉ trước khi tách câu, ví dụ:
+\begin{itemize}
+  \item \code{Inc.}
+  \item \code{Corp.}
+  \item \code{Blvd.}
+  \item \code{S. Amphlett}
+  \item số mục như \code{2.2}
+\end{itemize}
+
+Điều này giúp tránh việc dấu chấm trong abbreviation bị hiểu nhầm là dấu kết thúc câu.
+
+\subsection{Chiến lược xác định ranh giới clause}
+Tách câu chỉ dựa trên dấu câu là chưa đủ đối với hợp đồng. Ví dụ, nếu tách trước từ \textit{where}, định nghĩa sau sẽ bị hỏng:
+
+\begin{lstlisting}
+(j) "SHADOW SITE" means the site where Co-Branded Site is made available ...
+\end{lstlisting}
+
+Do đó, hệ thống không xem các relative-clause marker như \textit{where}, \textit{when}, \textit{subject to} là ranh giới độc lập. Những cụm này được giữ trong clause nếu chúng phụ thuộc vào cụm danh từ phía trước.
+
+Chiến lược cuối cùng là:
+\begin{itemize}
+  \item Tách ở các ranh giới mạnh như dấu chấm hoặc dấu chấm phẩy;
+  \item Bảo toàn definition clause có \textit{means}, \textit{refers to}, \textit{is referred to};
+  \item Chỉ tách coordination khi vế sau có chủ thể pháp lý độc lập hoặc có thể tái sử dụng chủ thể và modal trước đó;
+  \item Lưu heading của section trong \code{clauses_context.json} để truy vết, thay vì chèn trực tiếp vào \code{clauses.txt}.
+\end{itemize}
+\subsection{Đoạn code chính của clause splitter}
+Thay vì dùng tách câu tổng quát, splitter dùng regex ranh giới câu khá thận trọng và bảo vệ dấu chấm trong abbreviation trước khi split. Đoạn code quan trọng nằm trong \code{src/clause_splitter.py}:
+
+\begin{lstlisting}[language=Python]
+SENTENCE_BOUNDARY_RE = re.compile(
+    r"(?<=[.;!?])\s+(?=(?:[A-Z0-9]|\([a-zA-Z0-9]+\)|\"))",
+    re.IGNORECASE,
+)
+
+for section, paragraph in _paragraphs(text):
+    protected = _protect_sentence_periods(paragraph)
+    for part in SENTENCE_BOUNDARY_RE.split(protected):
+        part = _restore_sentence_periods(part).strip(" ;")
+        if not part:
+            continue
+        if pending_prefix:
+            pending_section, prefix = pending_prefix
+            part = f"{prefix} {part}"
+            section = pending_section or section
+            pending_prefix = None
+\end{lstlisting}
+
+Điểm quan trọng của đoạn này là regex chỉ tách sau các ranh giới mạnh như dấu chấm, chấm phẩy, dấu hỏi hoặc dấu chấm than, và chỉ khi phía sau có dấu hiệu bắt đầu một clause mới. Regex này không tách trước các từ như \textit{where}, \textit{when} hoặc \textit{subject to}. Vì vậy, định nghĩa như \code{"SHADOW SITE" means the site where ...} được giữ nguyên, thay vì bị cắt thành fragment thiếu chủ ngữ. Hai hàm \code{_protect_sentence_periods} và \code{_restore_sentence_periods} giúp giữ các abbreviation như \code{Inc.}, \code{Corp.}, \code{Blvd.} không bị hiểu nhầm là kết thúc câu.
+\section{Gán nhãn cụm danh từ}
+\label{task_1.2}
+
+\subsection{Mục tiêu}
+Cụm danh từ thường biểu diễn các đối tượng pháp lý quan trọng như bên tham gia, dịch vụ, thông tin, thời hạn hoặc thuật ngữ được định nghĩa. Mục tiêu của bước này là gán nhãn ranh giới cụm danh từ cho từng token theo chuẩn IOB.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|}
+\hline
+Nhãn & Ý nghĩa \\ \hline
+\code{B-NP} & Bắt đầu cụm danh từ \\ \hline
+\code{I-NP} & Bên trong cụm danh từ \\ \hline
+\code{O} & Không thuộc cụm danh từ \\ \hline
+\end{tabular}
+\caption{Các nhãn IOB cho noun phrase chunking}
+\end{table}
+
+\subsection{Cách triển khai}
+Hệ thống dùng noun chunks của spaCy làm candidate ban đầu. Sau đó, một lớp hậu xử lý chuyển kết quả sang nhãn IOB ở mức token và sửa các lỗi đặc thù của miền pháp lý:
+\begin{itemize}
+  \item Dấu câu, dấu ngoặc, dấu nháy, dấu phẩy và standalone hyphen được gán \code{O};
+  \item Từ ghép chặt như \code{i-Escrow} và \code{Co-Branded} được giữ nguyên;
+  \item Hậu tố công ty như \code{INC.} và \code{LLC} có thể nối tiếp một noun phrase party;
+  \item Các clause được phân tách bằng dòng trống trong \code{output/chunks.txt}.
+\end{itemize}
+Mục đích cuối cùng là tránh trường hợp dấu phẩy hoặc dấu chấm bị đưa vào bên trong noun phrase.
+\subsection{Đoạn code chính của noun phrase chunking}
+Phần quan trọng nhất của chunker là chuyển noun chunks của spaCy thành nhãn IOB, đồng thời cắt noun phrase tại punctuation hoặc conjunction để output không có chuỗi IOB sai. Đoạn code nằm trong \code{src/chunker.py}:
+
+\begin{lstlisting}[language=Python]
+def noun_phrase_iob(clause: str, nlp) -> list[ChunkToken]:
+    doc = nlp(clause)
+    tags = ["O"] * len(doc)
+
+    for chunk in doc.noun_chunks:
+        segment: list[int] = []
+
+        def apply_segment() -> None:
+            if not segment:
+                return
+            tags[segment[0]] = "B-NP"
+            for index in segment[1:]:
+                tags[index] = "I-NP"
+
+        for token in chunk:
+            if _is_np_boundary(token):
+                apply_segment()
+                segment = []
+                continue
+            if _is_skipped_np_token(token):
+                apply_segment()
+                segment = []
+                continue
+            segment.append(token.i)
+        apply_segment()
+
+    return _format_tokens(doc, tags)
+\end{lstlisting}
+
+Trong đoạn này, \code{doc.noun_chunks} là candidate ban đầu từ spaCy. Hàm \code{apply_segment} gán token đầu là \code{B-NP} và các token tiếp theo là \code{I-NP}. Khi gặp conjunction như \code{and/or} hoặc token cần bỏ qua như dấu nháy, dấu ngoặc, dấu câu, hệ thống đóng segment hiện tại và bắt đầu segment mới. Nhờ vậy, các cụm định nghĩa kiểu \code{the "Agreement"} không làm dấu nháy trở thành một phần của noun phrase và không tạo lỗi \code{I-NP} đứng sau \code{O}.
+\section{Phân tích phụ thuộc cú pháp}
+\label{task_1.3}
+
+\subsection{Mục tiêu}
+Dependency parsing giúp xác định quan hệ ngữ pháp như động từ gốc, chủ ngữ, tân ngữ và modifier.
+
+Output của bước này:
+
+\begin{lstlisting}
+output/dependency.json
+\end{lstlisting}
+
+Với mỗi token, output gồm:
+\begin{itemize}
+  \item token text;
+  \item lemma;
+  \item POS tag;
+  \item head token;
+  \item dependency relation.
+\end{itemize}
+
+\subsection{Tùy chỉnh parser}
+Hệ thống dùng spaCy dependency parser có sẵn, tuy nhiên, hợp đồng pháp lý chứa nhiều tên công ty và abbreviation mà tokenizer tổng quát thường tách sai. Vì vậy, tokenizer được tùy chỉnh để giữ các token như:
+
+\begin{lstlisting}
+INC.
+Corp.
+LLC
+I-ESCROW
+i-Escrow
+2THEMART.COM
+2TheMart
+Co-Branded
+\end{lstlisting}
+
+Một bước normalization nhỏ sau parser đảm bảo dấu câu độc lập vẫn là \code{PUNCT} để tránh lỗi như dấu chấm trong \code{INC.} bị xem là proper noun.
+
+% =========================================================
+\part{Trích xuất thông tin và phân tích ngữ nghĩa}
+\label{assignment_2}
+
+\subsection{Luồng xử lý dependency parsing}
+Dependency parser được áp dụng theo pipeline sau:
+\begin{enumerate}
+  \item Load mô hình \code{en_core_web_sm} của spaCy.
+  \item Gọi hàm \code{configure_legal_nlp} để thêm special cases và regex token matching cho legal tokens.
+  \item Parse từng clause độc lập để tránh dependency tree bị kéo dài qua nhiều clause.
+  \item Xuất mỗi token với \code{id}, \code{token}, \code{lemma}, \code{pos}, \code{tag}, \code{head}, \code{head_token} và \code{dependency}.
+\end{enumerate}
+
+Việc tùy chỉnh tokenizer không thay đổi thuật toán parser của spaCy, nhưng thay đổi đơn vị token đầu vào. Đây là điểm quan trọng: dependency parser chỉ có thể gán quan hệ đúng nếu các đơn vị pháp lý như tên công ty, domain name, section number và abbreviation không bị tách sai ngay từ đầu.
+
+\section{Nhận diện thực thể pháp lý}
+\label{task_2.1}
+
+\subsection{Mục tiêu}
+Hợp đồng pháp lý chứa nhiều thực thể đặc thù không được bao phủ đầy đủ bởi hệ thống NER tổng quát. Mục tiêu của bước này là xây dựng pipeline NER riêng cho hợp đồng, có khả năng nhận diện các span pháp lý quan trọng.
+
+Output của bước này:
+
+\begin{lstlisting}
+output/ner_results.json
+\end{lstlisting}
+
+\subsection{Schema thực thể}
+Hệ thống định nghĩa các nhãn NER sau:
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+Nhãn & Mô tả \\ \hline
+\code{PARTY} & Bên tham gia hợp đồng hoặc chủ thể pháp lý \\ \hline
+\code{MONEY} & Khoản tiền \\ \hline
+\code{DATE} & Ngày tháng, thời hạn, khoảng thời gian hoặc notice period \\ \hline
+\code{RATE} & Tỷ lệ phần trăm hoặc biểu thức rate \\ \hline
+\code{PENALTY} & Thuật ngữ phạt như late fee, fine, liquidated damages \\ \hline
+\code{LAW} & Luật, bộ luật, governing law hoặc legal citation \\ \hline
+\end{tabularx}
+\caption{Schema NER tùy chỉnh}
+\end{table}
+
+\subsection{Thiết kế NER hybrid}
+NER được triển khai theo hướng hybrid:
+\begin{enumerate}
+  \item regex pháp lý có độ chính xác cao cho các span phổ biến;
+  \item mô hình spaCy NER tùy chỉnh được train từ ví dụ seed trong \code{data/ner_seed.jsonl};
+  \item entity tổng quát của spaCy được lọc lại để giữ các span organization hoặc law-like phù hợp.
+\end{enumerate}
+
+Script huấn luyện là:
+
+\begin{lstlisting}
+src/train_ner.py
+\end{lstlisting}
+
+Mô hình đã train được lưu ở:
+
+\begin{lstlisting}
+models/legal_ner
+\end{lstlisting}
+
+Rule layer xử lý các format pháp lý phổ biến như:
+\begin{itemize}
+  \item tên công ty có hậu tố, ví dụ \code{I-ESCROW, INC.};
+  \item ngày tháng và duration, ví dụ \code{within sixty (60) days};
+  \item tỷ lệ, ví dụ \code{0.025\%};
+  \item citation pháp lý, ví dụ \code{California Financial Code Section17000 et seq.}
+\end{itemize}
+
+Các defined terms như \textit{Effective Date} không được gán \code{DATE} nếu chúng không chứa biểu thức thời gian thật, tránh nhầm lẫn giữa thuật ngữ pháp lý và ngày tháng thực tế.
+
+\subsection{Luồng suy luận NER}
+Trong inference, NER không chỉ lấy trực tiếp output của một mô hình duy nhất. Hệ thống chạy nhiều nguồn dự đoán rồi hợp nhất kết quả theo độ tin cậy:
+\begin{enumerate}
+  \item Regex pháp lý sinh các span có độ chính xác cao như money, rate, duration, law citation và corporate party.
+  \item Mô hình \code{models/legal_ner} dự đoán thêm các thực thể học được từ \code{data/ner_seed.jsonl}.
+  \item Entity của spaCy được lọc để giữ lại các organization/person/law-like span phù hợp.
+  \item Các span overlap được resolve bằng cách ưu tiên span dài hơn và nhãn có độ tin cậy cao hơn từ rule layer.
+\end{enumerate}
+
+Cách thiết kế hybrid này phù hợp với dữ liệu bài tập có kích thước nhỏ. Regex giúp ổn định các pattern pháp lý có hình thức rõ ràng, trong khi mô hình NER học được các biến thể khó viết rule đầy đủ. Ví dụ, \code{2THEMART.COM, INC.} được giữ thành một \code{PARTY}; \code{California Financial Code Section17000 et seq.} được nhận diện là \code{LAW}; còn từ \textit{interest} trong cụm \textit{rights or interest} không bị gán nhầm thành \code{PENALTY}.
+
+\section{Gán ngữ nghĩa}
+\label{task_2.2}
+
+\subsection{Mục tiêu}
+Semantic Role Labeling xác định ``ai làm gì, với ai, khi nào, trong điều kiện nào''. Trong hợp đồng, SRL đặc biệt hữu ích để trích xuất nghĩa vụ, quyền, bên nhận, deadline và trigger pháp lý.
+
+Output của bước này:
+
+\begin{lstlisting}
+output/srl_results.json
+\end{lstlisting}
+
+\subsection{Schema ngữ nghĩa}
+Schema SRL cuối cùng gồm:
+
+\begin{longtable}{|p{3.2cm}|p{10.5cm}|}
+\hline
+Vai nghĩa & Ý nghĩa \\ \hline
+\code{Agent} & Chủ thể hoặc bên thực hiện predicate \\ \hline
+\code{Theme} & Đối tượng pháp lý, hợp đồng, thông tin, dịch vụ, tiền, breach hoặc item bị tác động \\ \hline
+\code{Recipient} & Bên nhận một đối tượng, thông báo, quyền hoặc khoản tiền \\ \hline
+\code{Time} & Ngày, deadline, duration hoặc notice period \\ \hline
+\code{Condition} & Trigger, ngoại lệ hoặc prerequisite \\ \hline
+\code{LegalBasis} & Luật, bộ luật, section hoặc cơ sở pháp lý \\ \hline
+\code{DefinedTerm} & Thuật ngữ được định nghĩa trong definition clause \\ \hline
+\code{Definition} & Nội dung định nghĩa của thuật ngữ \\ \hline
+\code{ContractParties} & Các bên được nêu trong formation clause \\ \hline
+\code{Location} & Địa điểm, forum hoặc platform quan trọng \\ \hline
+\caption{Schema vai nghĩa SRL}
+\end{longtable}
+
+\subsection{Lớp rule pháp lý}
+SRL có các rule cho:
+\begin{itemize}
+  \item definition clause như \code{"SERVICES" means ...};
+  \item câu bị động, trong đó passive subject thường là \code{Theme};
+  \item formation clause có cụm \code{by and between};
+  \item condition opener như \textit{if}, \textit{unless}, \textit{upon}, \textit{notwithstanding}, \textit{in the event that};
+  \item date và duration span từ NER;
+  \item legal basis như law name hoặc section.
+\end{itemize}
+
+Ví dụ, một definition clause được biểu diễn như sau:
+
+\begin{lstlisting}
+{
+  "predicate": "means",
+  "roles": {
+    "DefinedTerm": "SERVICES",
+    "Definition": "i-Escrow's implementation and performance ..."
+  }
+}
+\end{lstlisting}
+
+Cách biểu diễn này chính xác hơn việc gán defined term thành \code{Agent}.
+
+\subsection{Mô hình Legal-BERT SRL}
+Để đáp ứng yêu cầu sử dụng kỹ thuật NLP nâng cao, nhóm fine-tune Legal-BERT cho bài toán predicate-conditioned token classification với base model là nlpaueb/bert-base-uncased-contracts
+
+Quá trình train được thực hiện bằng:
+
+\begin{lstlisting}
+src/train_srl.py
+\end{lstlisting}
+
+Annotation SRL đã review thủ công được lưu tại:
+
+\begin{lstlisting}
+data/srl_annotation_candidates.jsonl
+\end{lstlisting}
+
+Script tạo train/dev/test split:
+
+\begin{lstlisting}
+scripts/build_srl_dataset.py
+\end{lstlisting}
+
+Mỗi training example gồm:
+\begin{itemize}
+  \item clause ở sequence A;
+  \item predicate text ở sequence B;
+  \item BIO labels trên các token của clause cho các role như \code{Agent}, \code{Theme}, \code{Recipient}, \code{Time}, \code{Condition}.
+\end{itemize}
+
+Khi inference, prediction từ model được merge thận trọng với legal rules. Các role từ rule được ưu tiên nếu đó là các sửa lỗi pháp lý có độ tin cậy cao, còn Legal-BERT cung cấp khả năng dự đoán span học được từ dữ liệu.
+
+\subsection{Cơ chế huấn luyện và suy luận SRL}
+Mô hình SRL được thiết kế như một bài toán token classification có điều kiện theo predicate. Thay vì chỉ đưa clause vào model, hệ thống đưa cặp đầu vào gồm clause và predicate:
+\begin{lstlisting}
+[CLS] clause tokens [SEP] predicate text [SEP]
+\end{lstlisting}
+Các token thuộc clause được gán nhãn BIO như \code{B-Agent}, \code{I-Agent}, \code{B-Theme}, \code{B-Time}; các token thuộc predicate sequence và special tokens được mask khỏi loss bằng giá trị \code{-100}. Nhờ đó, cùng một clause có thể được diễn giải theo predicate đang xét.
+
+Luồng huấn luyện gồm bốn bước:
+\begin{enumerate}
+  \item Chuyển span ký tự trong gold annotation sang nhãn theo từng ký tự.
+  \item Tokenize clause bằng fast tokenizer để lấy offset mapping.
+  \item Gán nhãn BIO cho từng token dựa trên role chiếm đa số trong khoảng ký tự của token.
+  \item Fine-tune Legal-BERT bằng cross-entropy loss trên các token không bị mask.
+\end{enumerate}
+
+Khi suy luận, model trả về nhãn BIO cho từng token. Hệ thống gộp các token liên tiếp có cùng role thành span hoàn chỉnh, sau đó merge với rule layer. Các rule legal-specific như definition clause, passive voice và formation clause được ưu tiên vì chúng có độ chính xác cao và sửa được các lỗi phổ biến của parser/model tổng quát.
+
+\section{Phân loại ý định điều khoản}
+\label{task_2.3}
+
+\subsection{Mục tiêu}
+Intent classification gán mỗi clause vào một trong bốn nhóm chức năng pháp lý theo yêu cầu bài tập:
+\begin{itemize}
+  \item \code{Obligation};
+  \item \code{Prohibition};
+  \item \code{Right};
+  \item \code{Termination Condition}.
+\end{itemize}
+
+Output:
+
+\begin{lstlisting}
+output/intent_classification.txt
+\end{lstlisting}
+
+\subsection{Các mô hình được so sánh}
+Nhóm so sánh ba hướng:
+\begin{enumerate}
+  \item baseline TF-IDF + Logistic Regression;
+  \item legal rules + TF-IDF fallback;
+  \item Legal-BERT sequence classifier.
+\end{enumerate}
+
+Baseline được triển khai trong:
+
+\begin{lstlisting}
+src/intent.py
+\end{lstlisting}
+
+Legal-BERT classifier được train bằng:
+
+\begin{lstlisting}
+src/train_intent_transformer.py
+\end{lstlisting}
+
+Dataset builder kết hợp local contract clauses, seed examples và CUAD-derived mapped clauses:
+
+\begin{lstlisting}
+scripts/build_intent_dataset.py
+\end{lstlisting}
+
+Các definition clause không tự nhiên khớp với bốn nhãn yêu cầu. Vì assignment không có nhãn \textit{Definition}, các clause này được ánh xạ sang \code{Obligation} như nhãn gần nhất về hiệu lực pháp lý.
+
+\subsection{Chi tiết thuật toán intent classification}
+Với baseline TF-IDF + Logistic Regression, mỗi clause được biến đổi thành vector đặc trưng bằng \code{TfidfVectorizer} với unigram và bigram. Trọng số TF-IDF của một từ hoặc cụm từ phản ánh mức độ quan trọng của nó trong clause nhưng giảm ảnh hưởng của các từ xuất hiện quá phổ biến trong toàn bộ tập dữ liệu. Sau đó, Logistic Regression học ranh giới tuyến tính giữa bốn nhãn intent.
+
+\begin{equation}
+\mathrm{tfidf}(t,d)=\mathrm{tf}(t,d) \times \log\frac{N}{1+\mathrm{df}(t)}
+\end{equation}
+
+Trong đó $t$ là term, $d$ là clause, $N$ là số clause trong tập huấn luyện và $\mathrm{df}(t)$ là số clause chứa term đó. Các bigram như \textit{shall not}, \textit{right to}, \textit{may terminate}, \textit{prior written} rất quan trọng vì chúng mang tín hiệu pháp lý mạnh hơn từng từ riêng lẻ.
+
+Với Legal-BERT intent classifier, mỗi clause được tokenize bằng tokenizer của \code{nlpaueb/bert-base-uncased-contracts}. Vector \code{[CLS]} cuối cùng được đưa qua một classification head để dự đoán một trong bốn nhãn. Mô hình được fine-tune bằng cross-entropy loss có class weights để giảm ảnh hưởng của mất cân bằng nhãn. Trong pipeline cuối cùng, nếu thư mục \code{models/legal_intent_legalbert} tồn tại, hệ thống dùng transformer classifier; nếu không, hệ thống fallback về legal rules kết hợp TF-IDF.
+
+Dữ liệu intent được xây dựng bằng cách ánh xạ các category của CUAD sang bốn nhãn của assignment. Ví dụ, \textit{License Grant}, \textit{Audit Rights} và \textit{ROFR/ROFO/ROFN} được ánh xạ sang \code{Right}; \textit{Non-Compete}, \textit{No-Solicit}, \textit{Anti-Assignment} được ánh xạ sang \code{Prohibition}; \textit{Termination for Convenience}, \textit{Expiration Date} và \textit{Renewal Term} được ánh xạ sang \code{Termination Condition}. Các category như \textit{Governing Law}, \textit{Minimum Commitment}, \textit{Insurance} được xem là \code{Obligation} hoặc legal effect obligation.
+
+% =========================================================
+\part{Ứng dụng hỏi đáp hợp đồng}
+\label{assignment_3}
+
+\section{Mục tiêu}
+Thành phần QA tùy chọn chuyển các output có cấu trúc từ Assignment 1 và 2 thành một hệ thống hỏi đáp đơn giản. Mục tiêu không phải xây dựng chatbot sinh văn bản, mà là tạo câu trả lời có thể truy vết về clause nguồn.
+
+Module được triển khai tại:
+
+\begin{lstlisting}
+src/qa.py
+\end{lstlisting}
+
+\section{Dữ liệu đầu vào có cấu trúc}
+QA module đọc:
+
+\begin{lstlisting}
+output/ner_results.json
+output/srl_results.json
+output/intent_classification.txt
+output/clauses_context.json
+\end{lstlisting}
+
+\section{Logic xử lý câu hỏi}
+Hệ thống trích xuất tín hiệu từ câu hỏi:
+\begin{itemize}
+  \item party mention như \textit{i-Escrow}, \textit{2TheMart}, \textit{buyer}, \textit{seller};
+  \item intent hint như obligation, prohibition, right, termination;
+  \item entity focus như money, date, rate, penalty, law;
+  \item role hint từ từ hỏi như \textit{who}, \textit{when}, \textit{what}.
+\end{itemize}
+
+Mỗi clause được chấm điểm theo các tín hiệu này. Clause có điểm cao nhất được dùng để sinh câu trả lời từ semantic roles hoặc named entities. Mỗi câu trả lời đều kèm clause gốc để đảm bảo khả năng kiểm tra lại.
+
+\subsection{Thuật toán chấm điểm truy hồi}
+QA module không sinh câu trả lời tự do mà dùng cơ chế retrieve-and-ground trên các output đã có. Với mỗi câu hỏi, hệ thống tạo một tập tín hiệu gồm party mention, intent hint, entity focus và role hint. Sau đó mỗi clause được chấm điểm theo các tiêu chí sau:
+\begin{itemize}
+  \item khớp nhãn intent, ví dụ câu hỏi có \textit{terminate} sẽ ưu tiên clause có intent \code{Termination Condition};
+  \item khớp party hoặc entity trong \code{ner_results.json};
+  \item khớp role trong \code{srl_results.json}, ví dụ câu hỏi \textit{who} ưu tiên \code{Agent}, câu hỏi \textit{when} ưu tiên \code{Time};
+  \item khớp từ khóa lexical trong nội dung clause và section title.
+\end{itemize}
+Clause có điểm cao nhất được chọn làm bằng chứng. Câu trả lời chỉ được tạo từ span đã có trong NER/SRL hoặc từ chính clause nguồn, do đó hệ thống có khả năng truy vết và hạn chế hallucination.
+
+\section{Ví dụ}
+\begin{lstlisting}
+python -m src.qa "When can either party terminate this agreement?"
+\end{lstlisting}
+
+Output mẫu:
+
+\begin{lstlisting}
+Answer: The relevant time is within 2 months.
+Intent: Termination Condition
+Source section: 2.2 INITIAL INFORMATION TRANSFER MECHANISM DEVELOPMENT
+Source clause 24: In the event that the parties are unable to agree to an SOW within 2 months following the Effective Date, either party may, in its sole discretion, terminate this Agreement by providing written notice.
+\end{lstlisting}
+
+% =========================================================
+\part{Thực nghiệm và đánh giá}
+
+\section{Kiểm tra pipeline}
+Pipeline cuối cùng sinh đầy đủ các file yêu cầu. Validator xác nhận các output chính có số record khớp nhau.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l r}
+\toprule
+Loại output & Số lượng \\
+\midrule
+Clauses & 121 \\
+Dependency records & 121 \\
+NER records & 121 \\
+SRL records & 121 \\
+Intent records & 121 \\
+\bottomrule
+\end{tabular}
+\caption{Kết quả kiểm tra tính nhất quán của pipeline}
+\end{table}
+
+\section{Đánh giá SRL}
+Tập gold SRL cuối cùng có 120 predicate frames dùng được sau khi loại hai dòng fragment không có role. Cách chia dữ liệu:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l r}
+\toprule
+Tập dữ liệu & Số ví dụ \\
+\midrule
+Train & 84 \\
+Dev & 18 \\
+Test & 18 \\
+\bottomrule
+\end{tabular}
+\caption{Chia tập dữ liệu SRL}
+\end{table}
+
+Mô hình Legal-BERT SRL được fine-tune trong 5 epochs và đạt token accuracy trên test xấp xỉ \result{0.7818}. Kết quả exact-span F1:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l c}
+\toprule
+Mô hình & Exact Span F1 \\
+\midrule
+Rule baseline & 0.429 \\
+Legal-BERT SRL & 0.519 \\
+\bottomrule
+\end{tabular}
+\caption{So sánh exact-span F1 của SRL}
+\end{table}
+
+Việc tăng từ 0.429 lên 0.519 cho thấy Legal-BERT học được thông tin về role-span tốt hơn rule baseline. Tuy nhiên, F1 tuyệt đối vẫn ở mức trung bình vì tập gold còn nhỏ và clause pháp lý thường có điều kiện dài hoặc modifier lồng nhau.
+
+Phân bố source method trong output SRL:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l r}
+\toprule
+Nguồn sinh SRL & Số clause \\
+\midrule
+\code{legal_definition_rule} & 12 \\
+\code{transformer_srl+legal_rules} & 106 \\
+\code{dependency-rule fallback} & 3 \\
+\bottomrule
+\end{tabular}
+\caption{Phân bố source method của SRL}
+\end{table}
+
+\section{Đánh giá intent classification}
+Tập intent silver có 765 ví dụ, được chia như sau:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l r}
+\toprule
+Tập dữ liệu & Số ví dụ \\
+\midrule
+Train & 536 \\
+Dev & 116 \\
+Test & 113 \\
+\bottomrule
+\end{tabular}
+\caption{Chia tập dữ liệu intent}
+\end{table}
+
+Kết quả intent classification:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l c c}
+\toprule
+Mô hình & Accuracy & Macro F1 \\
+\midrule
+TF-IDF + Logistic Regression & 0.788 & 0.788 \\
+Legal-BERT intent classifier & 0.841 & 0.839 \\
+\bottomrule
+\end{tabular}
+\caption{Kết quả đánh giá intent classification}
+\end{table}
+
+Legal-BERT classifier vượt baseline TF-IDF. Trong khi đó, legal-rules + TF-IDF vẫn được giữ lại như một fallback có khả năng diễn giải.
+
+Để việc so sánh mô hình rõ ràng hơn, nhóm dùng cùng một split dữ liệu cho các mô hình trong từng tác vụ. Với SRL, đơn vị đánh giá là exact span của từng role: một dự đoán chỉ được tính đúng khi cả nhãn role, vị trí bắt đầu và vị trí kết thúc đều khớp gold annotation. Với intent classification, nhóm báo cáo accuracy và macro F1 để tránh trường hợp một nhãn xuất hiện nhiều làm che lấp chất lượng của các nhãn ít hơn. Macro F1 được tính bằng trung bình F1 của bốn nhãn \code{Obligation}, \code{Prohibition}, \code{Right} và \code{Termination Condition}.
+
+\section{Phân tích lỗi}
+Một số nhóm lỗi thường gặp:
+\begin{itemize}
+  \item \textbf{Nhầm Recipient và Theme:} trong clause thanh toán, recipient đôi khi bị gộp vào object span.
+  \item \textbf{Condition span dài:} clause bắt đầu bằng \textit{if}, \textit{unless}, \textit{in the event that} thường có cấu trúc lồng nhau khó cắt chính xác.
+  \item \textbf{Câu bị động:} passive subject cần được xem là \code{Theme}, không phải \code{Agent}.
+  \item \textbf{Clause fragment:} một số clause là fragment do artifact từ PDF hoặc clause splitter.
+  \item \textbf{Legal status predicate:} các câu có \textit{be deemed}, \textit{be effective}, \textit{remain in force} có thể cần role bổ sung như \code{Attribute} hoặc \code{Result}.
+\end{itemize}
+
+% =========================================================
+\part{Tái lập kết quả}
+
+\section{Cách chạy}
+Các lệnh chính:
+
+\begin{lstlisting}
+python scripts/build_input_from_dataset.py data/external/atticus_aok data/external/business_contract_dataset --output input/raw_contracts.txt --max-files 12
+
+python -m src.train_ner --base-model en_core_web_sm --iterations 50
+
+python -m pip install -r requirements-srl.txt
+python scripts/validate_srl_annotations.py --gold-only
+python scripts/build_srl_dataset.py
+python -m src.train_srl --epochs 5 --batch-size 4 --learning-rate 5e-5
+python scripts/build_srl_rule_baseline.py
+python -m src.evaluate_srl
+
+python scripts/build_intent_dataset.py --max-cuad-per-label 160
+python -m src.train_intent_transformer --epochs 3 --batch-size 8 --learning-rate 2e-5 --max-length 160
+python -m src.evaluate_intent
+
+python -m src.pipeline --input input/raw_contracts.txt
+python scripts/validate_outputs.py
+
+python -m src.qa "What is the effective date?"
+\end{lstlisting}
+
+\section{Các file output}
+Hệ thống sinh ra các file chính:
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+File & Mô tả \\
+\midrule
+\code{output/clauses.txt} & Mỗi dòng là một clause độc lập tương đối \\
+\code{output/chunks.txt} & Noun phrase chunks theo định dạng IOB \\
+\code{output/dependency.json} & Dependency parse cho từng clause \\
+\code{output/ner_results.json} & Named entities và span tương ứng \\
+\code{output/srl_results.json} & Predicate frames và semantic roles \\
+\code{output/intent_classification.txt} & Nhãn intent của clause \\
+\code{output/clauses_context.json} & Metadata về section và truy vết clause \\
+\bottomrule
+\end{tabularx}
+\caption{Các file output chính}
+\end{table}
+
+% =========================================================
+\part{Thảo luận và kết luận}
+
+\section{Hạn chế}
+Hệ thống hiện tại còn một số hạn chế.
+
+Thứ nhất, hợp đồng PDF thường chứa blank, checkbox, optional clause lặp lại và source marker. Mặc dù module tiền xử lý đã loại bỏ nhiều artifact, một số clause fragment vẫn có thể còn tồn tại.
+
+Thứ hai, mô hình NER được train từ seed dataset nhỏ. Vì vậy, lớp legal-pattern có độ chính xác cao vẫn cần thiết để cải thiện kết quả cho date, rate, corporate party và law citation.
+
+Thứ ba, tập gold SRL còn nhỏ. Legal-BERT cải thiện so với rule baseline, nhưng exact-span F1 vẫn ở mức trung bình. Mô hình đặc biệt nhạy với condition span dài, role hiếm như \code{LegalBasis}, và các clause fragment.
+
+Thứ tư, intent dataset dùng các clause từ CUAD được ánh xạ vào bốn nhãn của assignment. Cách này tốt hơn dataset sinh hoàn toàn bằng rule, nhưng vẫn chưa phải benchmark intent được con người annotate độc lập hoàn toàn.
+
+\section{Hướng phát triển}
+Các hướng cải thiện:
+\begin{itemize}
+  \item annotate thêm SRL examples cho các role yếu như \code{Recipient}, \code{Time}, \code{Condition}, \code{LegalBasis};
+  \item bổ sung role tùy chọn như \code{Attribute} và \code{Result} cho legal-status clauses;
+  \item review một tập test intent độc lập do con người gán nhãn;
+  \item cải thiện clause splitting với các fragment từ PDF;
+  \item mở rộng QA để hỗ trợ suy luận qua nhiều clause.
+\end{itemize}
+
+\section{Kết luận}
+Dự án đã xây dựng một pipeline hoàn chỉnh cho phân tích hợp đồng pháp lý tiếng Anh. Hệ thống sinh đầy đủ output cho clause splitting, noun phrase chunking, dependency parsing, NER, SRL và intent classification. Module QA tùy chọn cho thấy các output có cấu trúc có thể được dùng để trả lời câu hỏi hợp đồng kèm khả năng truy vết về clause nguồn.
+
+Hệ thống kết hợp luật pháp lý với mô hình transformer đã được thích nghi miền. Legal-BERT SRL cải thiện exact-span F1 so với rule baseline, và Legal-BERT intent classifier cải thiện accuracy cũng như macro F1 so với TF-IDF baseline. Kết quả này cho thấy ngay cả với tập annotation gold nhỏ, fine-tuning transformer theo miền vẫn có thể cải thiện trích xuất thông tin pháp lý khi kết hợp với hậu xử lý dựa trên luật.
+
+\clearpage
+\part*{Tài liệu tham khảo}
+\begin{enumerate}[label={[\arabic*]}]
+  \item Atticus Project. Contract Understanding Atticus Dataset (CUAD).
+  \item Chalkidis et al. LEGAL-BERT: The Muppets straight out of Law School.
+  \item Hugging Face. \code{nlpaueb/bert-base-uncased-contracts}.
+  \item spaCy Documentation. Industrial-strength Natural Language Processing in Python.
+  \item scikit-learn Documentation. TF-IDF and Logistic Regression.
+  \item Megha Rajeev. Business Contract Dataset, GitHub repository.
+\end{enumerate}
+
+\end{document}

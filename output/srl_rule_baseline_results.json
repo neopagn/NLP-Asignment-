@@ -1,0 +1,1415 @@
+[
+  {
+    "clause_id": 1,
+    "clause": "This Agreement is made as of June 21, 1999 (the \"Effective Date\") by and between I-ESCROW, INC., with its principal place of business at 1730 S. Amphlett Blvd., Suite 233, San Mateo, California 94402 (\"i-Escrow\"), and 2THEMART.COM, INC. having its principal place of business at 18301 Von Karman Avenue, 7th Floor, Irvine, California 92612 (\"2TheMart\").",
+    "predicate": "make",
+    "predicate_text": "made",
+    "roles": {
+      "Theme": "This Agreement",
+      "Agent": "I-ESCROW, INC.; i-Escrow; 2THEMART.COM, INC.; 2TheMart",
+      "Time": "June 21, 1999",
+      "ContractParties": "I-ESCROW, INC.; i-Escrow; 2THEMART.COM, INC.; 2TheMart"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 2,
+    "clause": "(a) \"CONTENT\" means all content or information, in any medium, provided by a party to the other party for use in conjunction with the performance of its obligations hereunder, including without limitation any text, music, sound, photographs, video, graphics, data or software.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "CONTENT",
+      "Definition": "all content or information, in any medium, provided by a party to the other party for use in conjunction with the performance of its obligations hereunder, including without limitation any text, music, sound, photographs, video, graphics, data or software.",
+      "Theme": "all content or information, in any medium, provided by a party to the other party for use in conjunction with the performance of its obligations hereunder, including without limitation any text, music, sound, photographs, video, graphics, data or software.",
+      "DefinitionLabel": "(a)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 3,
+    "clause": "Content provided by 2TheMart is referred to herein as \"2TheMart Content\" and Content provided by i-Escrow is referred to herein as \"i-Escrow Content.\"",
+    "predicate": "refer",
+    "predicate_text": "referred",
+    "roles": {
+      "Theme": "Content",
+      "AdditionalPredicates": "herein; refer",
+      "Agent": "2TheMart"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 4,
+    "clause": "(b) \"CO-BRANDED SITE\" means the web-site accessible through Domain Name, for the Services implemented by i-Escrow.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "CO-BRANDED SITE",
+      "Definition": "the web-site accessible through Domain Name, for the Services implemented by i-Escrow.",
+      "Theme": "the web-site accessible through Domain Name, for the Services implemented by i-Escrow.",
+      "DefinitionLabel": "(b)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 5,
+    "clause": "The homepage of this web-site will visibly display both 2TheMart Marks and i-Escrow Marks.",
+    "predicate": "display",
+    "predicate_text": "display",
+    "roles": {
+      "Agent": "The homepage",
+      "Theme": "both 2TheMart Marks and i-Escrow Marks"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 6,
+    "clause": "(c) \"CUSTOMERS\" means all users who access Co-Branded Site.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "CUSTOMERS",
+      "Definition": "all users who access Co-Branded Site.",
+      "Theme": "all users who access Co-Branded Site.",
+      "DefinitionLabel": "(c)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 7,
+    "clause": "(d) \"DOMAIN NAME\" means www.iescrow.com/2TheMart.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "DOMAIN NAME",
+      "Definition": "www.iescrow.com/2TheMart.",
+      "Theme": "www.iescrow.com/2TheMart.",
+      "DefinitionLabel": "(d)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 8,
+    "clause": "(e) \"ESCROW SERVICES\" means services for auction sellers and high bidders whereby an agent holds a buyer's money in trust until the buyer approves the applicable item that was physically delivered, at which time the agent releases the buyer's money to seller, after subtracting the escrow fees.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "ESCROW SERVICES",
+      "Definition": "services for auction sellers and high bidders whereby an agent holds a buyer's money in trust until the buyer approves the applicable item that was physically delivered, at which time the agent releases the buyer's money to seller, after subtracting the escrow fees.",
+      "Theme": "services for auction sellers and high bidders whereby an agent holds a buyer's money in trust until the buyer approves the applicable item that was physically delivered, at which time the agent releases the buyer's money to seller, after subtracting the escrow fees.",
+      "DefinitionLabel": "(e)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 9,
+    "clause": "(f) \"INFORMATION TRANSFER MECHANISM\" means the mechanism by which 2TheMart transfers to i-Escrow information to populate the applicable i-Escrow transaction and user registration forms.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "INFORMATION TRANSFER MECHANISM",
+      "Definition": "the mechanism by which 2TheMart transfers to i-Escrow information to populate the applicable i-Escrow transaction and user registration forms.",
+      "Theme": "the mechanism by which 2TheMart transfers to i-Escrow information to populate the applicable i-Escrow transaction and user registration forms.",
+      "DefinitionLabel": "(f)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 10,
+    "clause": "(g) \"LAUNCH DATE\" means the first date on which the Co-Branded Site is pointed to in all references to i-Escrow from 2TheMart auction site.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "LAUNCH DATE",
+      "Definition": "the first date on which the Co-Branded Site is pointed to in all references to i-Escrow from 2TheMart auction site.",
+      "Theme": "the first date on which the Co-Branded Site is pointed to in all references to i-Escrow from 2TheMart auction site.",
+      "DefinitionLabel": "(g)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 11,
+    "clause": "(h) \"MARKS\" means all domain names, trademarks and logos designated by a party for the other party's use in conjunction with such other party's performance under this Agreement.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "MARKS",
+      "Definition": "all domain names, trademarks and logos designated by a party for the other party's use in conjunction with such other party's performance under this Agreement.",
+      "Theme": "all domain names, trademarks and logos designated by a party for the other party's use in conjunction with such other party's performance under this Agreement.",
+      "DefinitionLabel": "(h)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 12,
+    "clause": "(i) \"SERVICES\" means i-Escrow's implementation and performance of the Escrow Services as of the Effective Date, as modified over time.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "SERVICES",
+      "Definition": "i-Escrow's implementation and performance of the Escrow Services as of the Effective Date, as modified over time.",
+      "Theme": "i-Escrow's implementation and performance of the Escrow Services as of the Effective Date, as modified over time.",
+      "DefinitionLabel": "(i)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 13,
+    "clause": "(j) \"SHADOW SITE\" means the site where Co-Branded Site is made available for 2TheMart's testing of the Information Transfer Mechanism prior to being made publicly available.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "SHADOW SITE",
+      "Definition": "the site where Co-Branded Site is made available for 2TheMart's testing of the Information Transfer Mechanism prior to being made publicly available.",
+      "Theme": "the site where Co-Branded Site is made available for 2TheMart's testing of the Information Transfer Mechanism prior to being made publicly available.",
+      "DefinitionLabel": "(j)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 14,
+    "clause": "(k) \"TRANSACTION\" means a transaction utilizing the Services that actually closes and that was initiated by a Transaction Inquiry from a Customer.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "TRANSACTION",
+      "Definition": "a transaction utilizing the Services that actually closes and that was initiated by a Transaction Inquiry from a Customer.",
+      "Theme": "a transaction utilizing the Services that actually closes and that was initiated by a Transaction Inquiry from a Customer.",
+      "DefinitionLabel": "(k)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 15,
+    "clause": "(l) \"TRANSACTION INQUIRY\" means a Customer's submission of i-Escrow's standard New Transaction Inquiry form (or its successor) on or through the Co-Branded Pages.",
+    "predicate": "means",
+    "predicate_text": "means",
+    "roles": {
+      "DefinedTerm": "TRANSACTION INQUIRY",
+      "Definition": "a Customer's submission of i-Escrow's standard New Transaction Inquiry form (or its successor) on or through the Co-Branded Pages.",
+      "Theme": "a Customer's submission of i-Escrow's standard New Transaction Inquiry form (or its successor) on or through the Co-Branded Pages.",
+      "DefinitionLabel": "(l)"
+    },
+    "method": "legal_definition_rule"
+  },
+  {
+    "clause_id": 16,
+    "clause": "Currently this means entry of a description and price of merchandise by a user (buyer or seller) who agrees to abide by the terms and conditions of the Services, together with email address of the other party, regardless of whether or not any Transaction is completed.",
+    "predicate": "mean",
+    "predicate_text": "means",
+    "roles": {
+      "Agent": "this",
+      "Theme": "entry of a description and price of merchandise by a user (buyer or seller) who agrees to abide by the terms and conditions of the Services, together with email address of the other party"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 17,
+    "clause": "As set forth herein, 2TheMart will promote Services to its auction users (buyers and sellers).",
+    "predicate": "promote",
+    "predicate_text": "promote",
+    "roles": {
+      "Agent": "2TheMart",
+      "Theme": "Services",
+      "Recipient": "its auction users (buyers and sellers",
+      "AdditionalPredicates": "set"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 18,
+    "clause": "i-Escrow shall develop Co-Branded Site.",
+    "predicate": "develop",
+    "predicate_text": "develop",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Theme": "Co-Branded Site"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 19,
+    "clause": "i-Escrow shall develop the Information Transfer Mechanism working with 2TheMart to make Services available seamlessly to Customers.",
+    "predicate": "develop",
+    "predicate_text": "develop",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Theme": "the Information Transfer Mechanism working with 2TheMart to make Services available seamlessly to Customers"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 20,
+    "clause": "Unless otherwise specified, each party shall be responsible for all development, hosting and other costs associated with the pages resident on their servers and all emails to users they send.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Condition": "Unless otherwise specified",
+      "Agent": "each party",
+      "AdditionalPredicates": "specify"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 21,
+    "clause": "The parties shall negotiate in good faith to determine the initial operation of the Information Transfer Mechanism and to describe such operation and development fees, in a statement of work (\"SOW\").",
+    "predicate": "negotiate",
+    "predicate_text": "negotiate",
+    "roles": {
+      "Agent": "The parties",
+      "AdditionalPredicates": "determine"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 22,
+    "clause": "Each party shall make available sufficient and qualified engineers to negotiate the SOW.",
+    "predicate": "make",
+    "predicate_text": "make",
+    "roles": {
+      "Agent": "Each party",
+      "AdditionalPredicates": "negotiate"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 23,
+    "clause": "No SOW shall be binding on the parties unless mutually approved by both parties.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Agent": "No SOW"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 24,
+    "clause": "In the event that the parties are unable to agree to an SOW within 2 months following the Effective Date, either party may, in its sole discretion, terminate this Agreement by providing written notice.",
+    "predicate": "terminate",
+    "predicate_text": "terminate",
+    "roles": {
+      "Theme": "this Agreement",
+      "AdditionalPredicates": "be",
+      "Agent": "either party",
+      "Condition": "In the event that the parties are unable to agree to an SOW within 2 months following the Effective Date",
+      "Time": "within 2 months"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 25,
+    "clause": "Once approved, the parties shall use commercially reasonable efforts to diligently implement their respective obligations under the SOW.",
+    "predicate": "use",
+    "predicate_text": "use",
+    "roles": {
+      "Agent": "the parties",
+      "Theme": "commercially reasonable efforts to diligently implement their respective obligations under the SOW",
+      "AdditionalPredicates": "approve"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 26,
+    "clause": "Upon completion of its duties under the SOW, a party shall notify the other party and provide the other party with the opportunity to test and evaluate its work.",
+    "predicate": "notify",
+    "predicate_text": "notify",
+    "roles": {
+      "Agent": "a party",
+      "Theme": "the other party",
+      "AdditionalPredicates": "provide",
+      "Condition": "Upon completion of its duties under the SOW"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 27,
+    "clause": "i-Escrow shall make available the Shadow Site for such testing in a timely manner.",
+    "predicate": "make",
+    "predicate_text": "make",
+    "roles": {
+      "Agent": "i-Escrow",
+      "ContractParties": "i-Escrow"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 28,
+    "clause": "Each party shall reasonably cooperate with the other party in effectuating their respective duties under the SOW.",
+    "predicate": "cooperate",
+    "predicate_text": "cooperate",
+    "roles": {
+      "Agent": "Each party"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 29,
+    "clause": "The Information Transfer Mechanism shall not go live until its operation has been approved (\"Approval Date\") by both parties, such approval not to be unreasonably withheld.",
+    "predicate": "go",
+    "predicate_text": "go",
+    "roles": {
+      "Agent": "The Information Transfer Mechanism",
+      "AdditionalPredicates": "approve"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 30,
+    "clause": "Each party shall use good faith and reasonable efforts to expeditiously develop the Co-Branded Pages and the Information Transfer Mechanism.",
+    "predicate": "use",
+    "predicate_text": "use",
+    "roles": {
+      "Agent": "Each party",
+      "Theme": "good faith and reasonable efforts to expeditiously develop the Co-Branded Pages and the Information Transfer Mechanism"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 31,
+    "clause": "In the event that, after using such efforts, the Launch Date has not occurred within 4 months following the Effective Date, either party may terminate this Agreement by providing written notice.",
+    "predicate": "terminate",
+    "predicate_text": "terminate",
+    "roles": {
+      "Agent": "either party",
+      "Theme": "this Agreement",
+      "AdditionalPredicates": "occur",
+      "Condition": "In the event that, after using such efforts",
+      "Time": "within 4 months"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 32,
+    "clause": "If only one party has used good faith and reasonable development efforts, only that party may exercise the foregoing right to terminate.",
+    "predicate": "exercise",
+    "predicate_text": "exercise",
+    "roles": {
+      "Condition": "If only one party has used good faith and reasonable development efforts",
+      "Agent": "only that party",
+      "Theme": "the foregoing right to terminate",
+      "AdditionalPredicates": "use"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 33,
+    "clause": "i-Escrow may place banner advertising on the Co-Branded Site upon prior written approval of 2TheMart, which shall be at the discretion of 2TheMart.",
+    "predicate": "place",
+    "predicate_text": "place",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Theme": "banner advertising",
+      "Time": "the Co-Branded Site"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 34,
+    "clause": "All advertising revenue arising from the banner ads shall be solely i-Escrow's.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Agent": "All advertising revenue",
+      "Theme": "solely i-Escrow's"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 35,
+    "clause": "i-Escrow shall not run banner advertisements on the Co-Branded Site for any of 2TheMart's competitors.",
+    "predicate": "run",
+    "predicate_text": "run",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Theme": "banner advertisements",
+      "Time": "the Co-Branded Site",
+      "Recipient": "any of 2TheMart's competitors"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 36,
+    "clause": "2TheMart shall provide in writing, a list of companies they would like to exclude, including every time they wish to change this list.",
+    "predicate": "provide",
+    "predicate_text": "provide",
+    "roles": {
+      "Agent": "2TheMart",
+      "Theme": "a list of companies they would like to exclude, including every time they wish to change this list"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 37,
+    "clause": "The parties each shall in good faith work to provide reasonable service levels with respect to the operation of the portions of the Information Transfer Mechanism in their control.",
+    "predicate": "party",
+    "predicate_text": "parties",
+    "roles": {},
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 38,
+    "clause": "The parties shall meet, at least once per month either in person, or by telephone, to coordinate the implementation of this agreement over time.",
+    "predicate": "meet",
+    "predicate_text": "meet",
+    "roles": {
+      "Agent": "The parties",
+      "AdditionalPredicates": "coordinate"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 39,
+    "clause": "After Launch Date, 2TheMart will widely promote the Services.",
+    "predicate": "promote",
+    "predicate_text": "promote",
+    "roles": {
+      "Time": "Launch Date",
+      "Agent": "2TheMart",
+      "Theme": "the Services"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 40,
+    "clause": "(a) To every seller and high bidder through means including.",
+    "predicate": "include",
+    "predicate_text": "including",
+    "roles": {
+      "Agent": "seller"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 41,
+    "clause": "not limited to, end of auction emails containing links, such that, it shall be possible for the buyer or seller to initiate a Transaction Inquiry with i-Escrow, without having to re-enter all their personal or transaction related information.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Agent": "it",
+      "AdditionalPredicates": "limit; initiate"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 42,
+    "clause": "2TheMart may use the \"Escrow Services Description\" attached in Exhibit A for creating such a page.",
+    "predicate": "use",
+    "predicate_text": "use",
+    "roles": {
+      "Agent": "2TheMart",
+      "Theme": "the \"Escrow Services Description\" attached in Exhibit A for creating such a page"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 43,
+    "clause": "After the Launch Date, i-Escrow shall pay 2TheMart advertising fees based on the number of Transaction Inquiries.",
+    "predicate": "pay",
+    "predicate_text": "pay",
+    "roles": {
+      "Time": "the Launch Date",
+      "Agent": "i-Escrow",
+      "Theme": "2TheMart advertising fees"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 44,
+    "clause": "This advertising fees shall consist of a per Transaction Inquiry amount calculated by multiplying 0.025% by the amount of the average Transaction from all Customers in the preceding quarter.",
+    "predicate": "consist",
+    "predicate_text": "consist",
+    "roles": {
+      "Agent": "This advertising fees"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 45,
+    "clause": "The formula for arriving at the per Transaction Inquiry amount may be revised from time to time during the term of this Agreement to reflect present market conditions (\"the Adjusted Rate\"), but only by mutual.",
+    "predicate": "revise",
+    "predicate_text": "revised",
+    "roles": {
+      "Theme": "The formula",
+      "Recipient": "time",
+      "Time": "the term of this Agreement",
+      "AdditionalPredicates": "reflect"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 46,
+    "clause": "The Adjusted Rate shall be added as an addendum to this Agreement.",
+    "predicate": "add",
+    "predicate_text": "added",
+    "roles": {
+      "Theme": "The Adjusted Rate"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 47,
+    "clause": "Within two (2) weeks following the end of each calendar quarter, i-Escrow shall provide to 2TheMart a report, describing for each quarter: the number of new registrations through the Co-Branded Pages.",
+    "predicate": "provide",
+    "predicate_text": "provide",
+    "roles": {
+      "Time": "two (2) weeks following the end of each calendar quarter",
+      "Agent": "i-Escrow",
+      "Recipient": "2TheMart",
+      "Theme": "a report",
+      "AdditionalPredicates": "describe"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 48,
+    "clause": "i-Escrow shall keep for one (1) year proper records and books of account relating to the computation of advertising payments owed to 2TheMart (including, as appropriate, the computation of the size of average Transaction).",
+    "predicate": "keep",
+    "predicate_text": "keep",
+    "roles": {
+      "Agent": "i-Escrow",
+      "AdditionalPredicates": "relate",
+      "Time": "for one (1) year",
+      "Theme": "proper records and books of account"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 49,
+    "clause": "Once every twelve (12) months, 2TheMart through a CPA may inspect and audit such records to verify reports.",
+    "predicate": "inspect",
+    "predicate_text": "inspect",
+    "roles": {
+      "Agent": "every twelve (12) months",
+      "AdditionalPredicates": "audit",
+      "Time": "Once every twelve (12) months"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 50,
+    "clause": "Any such inspection will be conducted in a manner that does not unreasonably interfere with i-Escrow's business activities and with no less than fifteen (15) days notice.",
+    "predicate": "notice",
+    "predicate_text": "notice",
+    "roles": {
+      "Agent": "no less than fifteen (15) days",
+      "AdditionalPredicates": "conduct",
+      "Time": "no less than fifteen (15) days"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 51,
+    "clause": "i-Escrow shall within two (2) weeks make any overdue payments disclosed by the audit.",
+    "predicate": "make",
+    "predicate_text": "make",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Time": "two (2) weeks",
+      "AdditionalPredicates": "disclose",
+      "ContractParties": "i-Escrow"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 52,
+    "clause": "Such inspection shall be at 2TheMart's expense.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Agent": "Such inspection"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 53,
+    "clause": "however, if the audit reveals overdue payments in excess of ten percent (10%) of the payments owed to date, i-Escrow shall immediately pay all cost of such audit.",
+    "predicate": "pay",
+    "predicate_text": "pay",
+    "roles": {
+      "Condition": "if the audit reveals overdue payments in excess of ten percent (10%) of the payments owed to date",
+      "Agent": "i-Escrow",
+      "Theme": "all cost of such audit",
+      "AdditionalPredicates": "reveal"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 54,
+    "clause": "2TheMart hereby grants to i-Escrow a worldwide, non-exclusive right to use, reproduce, distribute, publicly perform, publicly display and digitally perform the 2TheMart Content soley with respect to and in conjunction with the Co-Branded Site all with the prior written consent of 2TheMart, for the term of this Agreement.",
+    "predicate": "grant",
+    "predicate_text": "grants",
+    "roles": {
+      "Recipient": "the term of this Agreement",
+      "Agent": "2TheMart"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 55,
+    "clause": "i-Escrow hereby grants to 2TheMart a worldwide, non-exclusive right to use, reproduce, distribute, publicly perform, publicly display and digitally perform the i-Escrow Content on or in conjunction with 2TheMart auctions.",
+    "predicate": "use",
+    "predicate_text": "use",
+    "roles": {
+      "AdditionalPredicates": "reproduce",
+      "Agent": "i-Escrow"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 56,
+    "clause": "any rights not expressly granted are reserved.",
+    "predicate": "reserve",
+    "predicate_text": "reserved",
+    "roles": {
+      "Theme": "any rights"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 57,
+    "clause": "Neither party shall exceed the scope of the rights granted hereunder.",
+    "predicate": "exceed",
+    "predicate_text": "exceed",
+    "roles": {
+      "Agent": "Neither party",
+      "Theme": "the scope of the rights granted hereunder"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 58,
+    "clause": "The Mark owner may terminate the foregoing rights if, in its reasonable discretion, the other party's use of the Marks tarnishes, blurs or dilutes the quality associated with the Marks or the associated goodwill and such problem is not cured within ten (10) days of notice of breach.",
+    "predicate": "terminate",
+    "predicate_text": "terminate",
+    "roles": {
+      "Agent": "The Mark owner",
+      "Theme": "the foregoing rights",
+      "Condition": "if, in its reasonable discretion, the other party's use of the Marks tarnishes, blurs or dilutes the quality associated with the Marks or the associated goodwill and such problem is not cured within ten (10) days of notice of breach",
+      "AdditionalPredicates": "cure",
+      "Time": "within ten (10) days"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 59,
+    "clause": "owner may specify that certain pages of the other party's web-site may not contain the Marks.",
+    "predicate": "specify",
+    "predicate_text": "specify",
+    "roles": {
+      "Agent": "owner",
+      "AdditionalPredicates": "contain"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 60,
+    "clause": "Title to and ownership of the owner's Marks shall remain with the owner.",
+    "predicate": "remain",
+    "predicate_text": "remain",
+    "roles": {
+      "Agent": "Title"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 61,
+    "clause": "The receiving party shall use the Marks exactly in the form provided and in conformance with any trademark usage policies.",
+    "predicate": "use",
+    "predicate_text": "use",
+    "roles": {
+      "Agent": "The receiving party",
+      "Theme": "the Marks"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 62,
+    "clause": "The other party shall not take any action inconsistent with the owner's ownership of the Marks.",
+    "predicate": "take",
+    "predicate_text": "take",
+    "roles": {
+      "Agent": "The other party",
+      "Theme": "any action inconsistent with the owner's ownership of the Marks"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 63,
+    "clause": "any benefits accruing from use of such Marks shall automatically vest in the owner.",
+    "predicate": "vest",
+    "predicate_text": "vest",
+    "roles": {
+      "Agent": "any benefits"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 64,
+    "clause": "The other party shall not form any combination marks with the other party's Marks.",
+    "predicate": "form",
+    "predicate_text": "form",
+    "roles": {
+      "Agent": "The other party",
+      "Theme": "any combination marks with the other party's Marks"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 65,
+    "clause": "Notwithstanding the foregoing, to the extent that the Domain Name is deemed a combination mark, neither party shall use the Domain Name for any purpose except as expressly provided herein or attempt to register the Domain Name.",
+    "predicate": "use",
+    "predicate_text": "use",
+    "roles": {
+      "Recipient": "the extent that the Domain Name is deemed a combination mark",
+      "Agent": "neither party",
+      "Theme": "the Domain Name",
+      "Condition": "Notwithstanding the foregoing"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 66,
+    "clause": "the parties will jointly cooperate on any enforcement action of infringement of the Domain Name.",
+    "predicate": "cooperate",
+    "predicate_text": "cooperate",
+    "roles": {
+      "Agent": "the parties",
+      "Time": "any enforcement action of infringement of the Domain Name"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 67,
+    "clause": "All rights (under any applicable intellectual property right) granted herein are not sublicenseable.",
+    "predicate": "be",
+    "predicate_text": "are",
+    "roles": {
+      "Agent": "herein"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 68,
+    "clause": "Notwithstanding the foregoing, either party may use a third party web host.",
+    "predicate": "use",
+    "predicate_text": "use",
+    "roles": {
+      "Agent": "either party",
+      "Theme": "a third party web host",
+      "Condition": "Notwithstanding the foregoing"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 69,
+    "clause": "all actions or failures to act of the web host that would be a breach of this Agreement, were the actions or failures to act taken by the applicable party, shall be deemed a breach of this Agreement.",
+    "predicate": "deem",
+    "predicate_text": "deemed",
+    "roles": {
+      "Theme": "a breach of this Agreement",
+      "AdditionalPredicates": "be"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 70,
+    "clause": "In addition, 2TheMart may grant sublicenses to companies that 2TheMart has a business relationship with to the extent that 2TheMart Content is visible from such company's web-site through a link or other means.",
+    "predicate": "grant",
+    "predicate_text": "grant",
+    "roles": {
+      "Agent": "2TheMart",
+      "Theme": "sublicenses to companies that 2TheMart has a business relationship with to the extent that 2TheMart Content is visible from such company's web-site through a link or other means"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 71,
+    "clause": "2TheMart shall not provide any 2TheMart Content.",
+    "predicate": "provide",
+    "predicate_text": "provide",
+    "roles": {
+      "Agent": "2TheMart",
+      "Theme": "any 2TheMart Content"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 72,
+    "clause": "i-Escrow shall not provide any i-Escrow Content, that: (a) infringes any third party's copyright, patent, trademark, trade secret or other proprietary rights or rights of publicity or privacy.",
+    "predicate": "provide",
+    "predicate_text": "provide",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Theme": "any i-Escrow Content",
+      "AdditionalPredicates": "infringe"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 73,
+    "clause": "i-Escrow will comply with all laws and regulations and act as an Independent Escrow Agent as per the guidelines of California Escrow Law (California Financial Code Section17000 et seq., or its successor).",
+    "predicate": "comply",
+    "predicate_text": "comply",
+    "roles": {
+      "Agent": "i-Escrow",
+      "LegalBasis": "California Escrow Law"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 74,
+    "clause": "Should any of the terms, conditions or provisions of this Agreement conflict with the California Escrow Law, its rules or regulations, which govern i-Escrow's business practices, the California Escrow Law shall prevail.",
+    "predicate": "prevail",
+    "predicate_text": "prevail",
+    "roles": {
+      "Agent": "the California Escrow Law",
+      "Condition": "Should any of the terms, conditions or provisions of this Agreement conflict with the California Escrow Law, its rules or regulations, which govern i-Escrow's business practices",
+      "LegalBasis": "California Escrow Law"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 75,
+    "clause": "Notwithstanding the foregoing, at any time that i-Escrow reasonably believes such a conflict exists, i-Escrow will give 2TheMart written notice of such conflict and the parties will use their best efforts to resolve such conflict.",
+    "predicate": "give",
+    "predicate_text": "give",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Theme": "2TheMart written notice of such conflict",
+      "AdditionalPredicates": "use",
+      "Condition": "Notwithstanding the foregoing"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 76,
+    "clause": "Each party acknowledges that it has not entered into this Agreement in reliance upon any warranty or representation except those specifically set forth herein.",
+    "predicate": "acknowledge",
+    "predicate_text": "acknowledges",
+    "roles": {
+      "Agent": "Each party",
+      "AdditionalPredicates": "enter"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 77,
+    "clause": "The term of this Agreement shall continue for one (1) year following the Launch Date, unless earlier terminated as provided herein.",
+    "predicate": "continue",
+    "predicate_text": "continue",
+    "roles": {
+      "Agent": "The term",
+      "Recipient": "one (1) year",
+      "Condition": "unless earlier terminated as provided herein",
+      "AdditionalPredicates": "terminate",
+      "Time": "for one (1) year"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 78,
+    "clause": "This Agreement may be renewed for any number of successive one (1) year terms by mutual written agreement of the parties prior to the conclusion of the term of this Agreement.",
+    "predicate": "renew",
+    "predicate_text": "renewed",
+    "roles": {
+      "Theme": "This Agreement",
+      "Recipient": "any number of successive one (1) year terms by mutual written agreement of the parties",
+      "Time": "one (1) year"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 79,
+    "clause": "A party wishing to renew this Agreement shall give the other party notice thereof no less than thirty (30) days before the expiration of the term then in effect.",
+    "predicate": "give",
+    "predicate_text": "give",
+    "roles": {
+      "Agent": "A party",
+      "Theme": "the other party notice",
+      "Time": "the expiration of the term"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 80,
+    "clause": "In the event that either party does not give such notice, the term of this Agreement shall be automatically renewed for another one (1) year.",
+    "predicate": "renew",
+    "predicate_text": "renewed",
+    "roles": {
+      "Theme": "the term",
+      "Recipient": "another one (1) year",
+      "Condition": "In the event that either party does not give such notice",
+      "Time": "one (1) year"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 81,
+    "clause": "In addition to other remedies that may be available to it, by providing written notice, a party may immediately terminate this Agreement: (a) if the other party materially breaches this Agreement and fails to cure that breach within sixty (60) days after receiving written notice of the breach, or (b) as provided in Sections 2.2 INITIAL INFORMATION TRANSFER MECHANISM DEVELOPMENT , 2.4 RESTRICTIONS ON COMMUNICATIONS , or 12.4.",
+    "predicate": "terminate",
+    "predicate_text": "terminate",
+    "roles": {
+      "Agent": "a party",
+      "Theme": "this Agreement",
+      "Condition": "if the other party materially breaches this Agreement and fails to cure that breach within sixty (60) days after receiving written notice of the breach, or (b) as provided in Sections 2.2 INITIAL INFORMATION TRANSFER MECHANISM DEVELOPMENT , 2.4 RESTRICTIONS ON COMMUNICATIONS , or 12.4",
+      "AdditionalPredicates": "breach",
+      "Time": "within sixty (60) days"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 82,
+    "clause": "If a majority of the equity securities of either 2TheMart or i-Escrow, Inc. (except that i-Escrow may sell all or a majority of its equity securities or voting interests to i-Escrow.com.",
+    "predicate": "majority",
+    "predicate_text": "majority",
+    "roles": {
+      "Condition": "If a majority of the equity securities of either 2TheMart or i-Escrow",
+      "Agent": "2TheMart"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 83,
+    "clause": "i-Escrow.com may sell all or a majority of its equity securities or voting interests to i-Escrow's existing shareholders, without triggering the foregoing) are acquired by another company during the term of this Agreement either company may terminate this Agreement, without liability, by giving a thirty (30) days written notice to the other party.",
+    "predicate": "sell",
+    "predicate_text": "sell",
+    "roles": {
+      "Agent": "i-Escrow.com",
+      "Theme": "all or a majority of its equity securities or voting interests",
+      "Recipient": "i-Escrow's existing shareholders",
+      "AdditionalPredicates": "acquire",
+      "Time": "thirty (30) days"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 84,
+    "clause": "Either party may terminate or suspend this Agreement effective immediately and without liability upon written notice to the other party if any one of the following events occurs.",
+    "predicate": "terminate",
+    "predicate_text": "terminate",
+    "roles": {
+      "Agent": "Either party",
+      "AdditionalPredicates": "suspend"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 85,
+    "clause": "(b) a proceeding is instituted against the other party under any provision of any bankruptcy laws which is not dismissed within ninety (90) days.",
+    "predicate": "institute",
+    "predicate_text": "instituted",
+    "roles": {
+      "Theme": "(b) a proceeding",
+      "Time": "within ninety (90) days"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 86,
+    "clause": "Upon expiration or termination of this Agreement for any reason: (a) all rights granted herein shall terminate, (b) i-Escrow shall pay all amounts owed to 2TheMart within six (6) weeks of termination, and (c) each party shall remove the other party's content and Marks from their servers.",
+    "predicate": "terminate",
+    "predicate_text": "terminate",
+    "roles": {
+      "Agent": "all rights",
+      "Condition": "Upon expiration or termination of this Agreement for any reason: (a) all rights granted herein shall terminate",
+      "Time": "within six (6) weeks"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 87,
+    "clause": "Notwithstanding the foregoing, unless this Agreement was terminated for a material breach, all provisions of this Agreement shall survive to the extent necessary for i-Escrow to complete any Customer transactions which are pending at the time of expiration or termination.",
+    "predicate": "survive",
+    "predicate_text": "survive",
+    "roles": {
+      "Condition": "unless this Agreement was terminated for a material breach",
+      "Agent": "all provisions",
+      "Recipient": "the extent necessary for i-Escrow to complete any Customer transactions which are pending at the time of expiration or termination",
+      "AdditionalPredicates": "terminate"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 88,
+    "clause": "Sections 1, 7, 8.5 EFFECTS OF TERMINATION , 9, 10, 11 and 12 shall survive expiration or termination of this Agreement.",
+    "predicate": "survive",
+    "predicate_text": "survive",
+    "roles": {
+      "Agent": "Sections",
+      "Theme": "expiration or termination of this Agreement"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 89,
+    "clause": "Each party (the \"Indemnifying Party\") shall indemnify the other party (the \"Indemnified Party\") against any and all claims, losses, costs and expenses, including reasonable attorneys' fees, which the Indemnified Party may incur as a result of claims in any form by third parties arising from the Indemnifying Party's acts, omissions or misrepresentations to the extent that the Indemnified Party is deemed a principal of the Indemnifying Party.",
+    "predicate": "indemnify",
+    "predicate_text": "indemnify",
+    "roles": {
+      "Agent": "Each party",
+      "Theme": "the other party (the \"Indemnified Party\")"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 90,
+    "clause": "In addition, 2TheMart shall indemnify i-Escrow against any and all claims, losses, costs and expenses, including reasonable attorneys' fees, which i-Escrow may incur as a result of claims in any form by third parties arising from 2TheMart Content.",
+    "predicate": "indemnify",
+    "predicate_text": "indemnify",
+    "roles": {
+      "Agent": "2TheMart",
+      "Theme": "i-Escrow"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 91,
+    "clause": "In addition, i-Escrow shall indemnify 2TheMart against any and all claims, losses, costs and expenses, including reasonable attorneys' fees, which 2TheMart may incur as a result of claims in any form by third parties arising from i-Escrow.",
+    "predicate": "indemnify",
+    "predicate_text": "indemnify",
+    "roles": {
+      "Agent": "i-Escrow",
+      "Theme": "2TheMart"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 92,
+    "clause": "the Indemnifying Party shall not enter into any settlement that affects the Indemnified Party's rights or interest without the Indemnified Party's prior written approval.",
+    "predicate": "enter",
+    "predicate_text": "enter",
+    "roles": {
+      "Agent": "the Indemnifying Party"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 93,
+    "clause": "The Indemnified Party shall have the right to participate in the defense at its expense.",
+    "predicate": "have",
+    "predicate_text": "have",
+    "roles": {
+      "Agent": "The Indemnified Party",
+      "Theme": "the right to participate in the defense at its expense"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 94,
+    "clause": "EXCEPT IN THE EVENT OF A BREACH OF SECTION 11, NEITHER PARTY SHALL BE LIABLE FOR SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES OR LOST PROFITS (HOWEVER ARISING, INCLUDING NEGLIGENCE) ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT, EVEN IF THE PARTIES ARE AWARE OF THE POSSIBILITY OF SUCH DAMAGES.",
+    "predicate": "be",
+    "predicate_text": "BE",
+    "roles": {
+      "Agent": "NEITHER PARTY",
+      "Theme": "LIABLE FOR SPECIAL"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 95,
+    "clause": "Each party shall hold the other party's Confidential Information in confidence and shall not disclose such Confidential Information to third parties nor use the other party's Confidential Information for any purpose other than as required to perform under this Agreement.",
+    "predicate": "hold",
+    "predicate_text": "hold",
+    "roles": {
+      "Agent": "Each party",
+      "Theme": "the other party's Confidential Information",
+      "AdditionalPredicates": "disclose"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 96,
+    "clause": "Such restrictions shall not apply to Confidential Information which (a) is already known by the recipient, (b) becomes, through no act or fault of the recipient, publicly known, (c) is received by recipient from a third party without a restriction on disclosure or use, or (d) is independently developed by recipient without reference to the Confidential Information.",
+    "predicate": "apply",
+    "predicate_text": "apply",
+    "roles": {
+      "Agent": "Such restrictions",
+      "Recipient": "Confidential Information which (a) is already known by the recipient, (b)",
+      "AdditionalPredicates": "become; receive"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 97,
+    "clause": "The restriction on disclosure shall not apply to Confidential Information which is required to be disclosed by a court or government agency.",
+    "predicate": "apply",
+    "predicate_text": "apply",
+    "roles": {
+      "Agent": "The restriction",
+      "Recipient": "Confidential Information which is required to be disclosed by a court or government agency"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 98,
+    "clause": "Upon expiration or termination of this Agreement, within fourteen (14) days of the other party's request, each party will return all Confidential Information and other deliverables to the requesting party.",
+    "predicate": "return",
+    "predicate_text": "return",
+    "roles": {
+      "Time": "fourteen (14) days of the other party's request",
+      "Agent": "each party",
+      "Theme": "all Confidential Information and other deliverables",
+      "Recipient": "the requesting party",
+      "Condition": "Upon expiration or termination of this Agreement"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 99,
+    "clause": "This Agreement will be governed and construed in accordance with the laws of the State of California without giving effect to conflict of laws principles.",
+    "predicate": "govern",
+    "predicate_text": "governed",
+    "roles": {
+      "Theme": "This Agreement",
+      "AdditionalPredicates": "construe",
+      "LegalBasis": "laws of the State of California"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 100,
+    "clause": "Both parties submit to personal jurisdiction in California and further agree that any cause of action arising under this Agreement shall be brought in a court in Orange County, California.",
+    "predicate": "submit",
+    "predicate_text": "submit",
+    "roles": {
+      "Agent": "Both parties",
+      "Recipient": "personal jurisdiction in California",
+      "AdditionalPredicates": "agree"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 101,
+    "clause": "If any provision herein is held to be invalid or unenforceable for any reason, the remaining provisions will continue in full force without being impaired or invalidated in any way.",
+    "predicate": "continue",
+    "predicate_text": "continue",
+    "roles": {
+      "Condition": "If any provision herein is held to be invalid or unenforceable for any reason",
+      "Agent": "the remaining provisions",
+      "AdditionalPredicates": "hold"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 102,
+    "clause": "The parties agree to replace any invalid provision with a valid provision that most closely approximates the intent and economic effect of the invalid provision.",
+    "predicate": "agree",
+    "predicate_text": "agree",
+    "roles": {
+      "Agent": "The parties",
+      "AdditionalPredicates": "replace"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 103,
+    "clause": "request shall be made no less than three (3) business days prior to the requested release date.",
+    "predicate": "make",
+    "predicate_text": "made",
+    "roles": {
+      "Theme": "request",
+      "Time": "no less than three (3) business days"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 104,
+    "clause": "A party shall not unreasonably withhold or delay the granting of its approval of such materials.",
+    "predicate": "withhold",
+    "predicate_text": "withhold",
+    "roles": {
+      "Agent": "A party",
+      "AdditionalPredicates": "delay"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 105,
+    "clause": "such approval shall be provided to the other party within one (1) business day of receipt.",
+    "predicate": "provide",
+    "predicate_text": "provided",
+    "roles": {
+      "Theme": "such approval",
+      "Recipient": "the other party",
+      "Time": "one (1) business day of receipt"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 106,
+    "clause": "Except as otherwise provided, if performance hereunder (other than payment) is prevented, restricted or interfered with by any act or condition whatsoever beyond the reasonable control of a party (a \"force majeure event\"), the party so affected, upon giving prompt notice to the other party, shall be excused from such performance to the extent of such prevention, restriction or interference.",
+    "predicate": "excuse",
+    "predicate_text": "excused",
+    "roles": {
+      "Recipient": "the extent of such prevention, restriction or interference",
+      "AdditionalPredicates": "prevent",
+      "Condition": "Except as otherwise provided"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 107,
+    "clause": "However, if a force majeure event interferes with the operation of this Agreement for sixty (60) days or more, either party can terminate this Agreement, without penalty.",
+    "predicate": "terminate",
+    "predicate_text": "terminate",
+    "roles": {
+      "Condition": "if a force majeure event interferes with the operation of this Agreement for sixty (60) days or more",
+      "Agent": "either party",
+      "Theme": "this Agreement",
+      "AdditionalPredicates": "interfere",
+      "Time": "for sixty (60) days or more"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 108,
+    "clause": "Notwithstanding the foregoing, the occurrence of any force majeure event shall not limit either party's obligations under Section 9 with respect to any third party claim as to which the other party seeks indemnification.",
+    "predicate": "limit",
+    "predicate_text": "limit",
+    "roles": {
+      "Agent": "the occurrence",
+      "Theme": "either party's obligations",
+      "Condition": "Notwithstanding the foregoing"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 109,
+    "clause": "Neither party shall make any warranties or representations on behalf of the other party.",
+    "predicate": "make",
+    "predicate_text": "make",
+    "roles": {
+      "Agent": "Neither party",
+      "Theme": "any warranties or representations on behalf of the other party"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 110,
+    "clause": "Any notices hereunder shall be given to the appropriate party at the address specified below or at such other address as the party shall specify in writing.",
+    "predicate": "give",
+    "predicate_text": "given",
+    "roles": {
+      "Theme": "hereunder"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 111,
+    "clause": "Notice shall be deemed given: upon personal delivery.",
+    "predicate": "deem",
+    "predicate_text": "deemed",
+    "roles": {
+      "Theme": "Notice"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 112,
+    "clause": "This Agreement may be executed in one or more counterparts, each of which shall be deemed an original and all of which shall be taken together and deemed to be one instrument.",
+    "predicate": "execute",
+    "predicate_text": "executed",
+    "roles": {
+      "Theme": "This Agreement"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 113,
+    "clause": "The parties agree to act in good faith with respect to each provision of this Agreement and any dispute that may arise related hereto.",
+    "predicate": "agree",
+    "predicate_text": "agree",
+    "roles": {
+      "Agent": "The parties",
+      "AdditionalPredicates": "act"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 114,
+    "clause": "The parties agree to sign and/or provide such additional documents and/or information as may reasonably be required to carry out the intent of this Agreement and to effectuate its purposes.",
+    "predicate": "agree",
+    "predicate_text": "agree",
+    "roles": {
+      "Agent": "The parties",
+      "AdditionalPredicates": "sign; provide"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 115,
+    "clause": "The rights and remedies provided herein will be cumulative and not exclusive of any other rights or remedies provided by law or otherwise.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Agent": "The rights"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 116,
+    "clause": "No failure or forbearance by either party to exercise any right or insist upon or enforce performance of any obligation hereunder shall be deemed a waiver or relinquishment to any extent of that or any other right or obligation, in that or any other instance.",
+    "predicate": "deem",
+    "predicate_text": "deemed",
+    "roles": {
+      "Theme": "No failure",
+      "Recipient": "any extent of that or any other right or obligation"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 117,
+    "clause": "same shall be and shall remain in full force and effect.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Agent": "same",
+      "AdditionalPredicates": "remain"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 118,
+    "clause": "Any waiver of any right of a party or any obligation of the other party hereunder must be made in a writing signed by the arty waiving such right or obligation.",
+    "predicate": "make",
+    "predicate_text": "made",
+    "roles": {
+      "Theme": "Any waiver"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 119,
+    "clause": "This Agreement contains the entire understanding of the parties hereto with respect to the transactions and matters contemplated hereby, supersedes all previous Agreements between i-Escrow and 2TheMart concerning the subject matter (except for the Confidential Agreement Dated January 4 1999, which shall survive this Agreement).",
+    "predicate": "supersede",
+    "predicate_text": "supersedes",
+    "roles": {
+      "Theme": "all previous Agreements between i-Escrow and 2TheMart",
+      "AdditionalPredicates": "contain",
+      "Time": "January 4 1999",
+      "Agent": "i-Escrow"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 120,
+    "clause": "No amendments or supplements to this Agreement will be effective for any purpose except by a written Agreement signed by the parties.",
+    "predicate": "be",
+    "predicate_text": "be",
+    "roles": {
+      "Agent": "No amendments"
+    },
+    "method": "legal_dependency_rules"
+  },
+  {
+    "clause_id": 121,
+    "clause": "Once the transaction is acknowledged by the other party, the buyer pays i-Escrow the agreed upon price, by credit card or other means.",
+    "predicate": "pay",
+    "predicate_text": "pays",
+    "roles": {
+      "Agent": "the buyer",
+      "Theme": "i-Escrow",
+      "AdditionalPredicates": "acknowledge"
+    },
+    "method": "legal_dependency_rules"
+  }
+]

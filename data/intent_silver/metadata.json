@@ -1,0 +1,44 @@
+{
+  "source_clauses": "C:\\Users\\Your mom\\Documents\\New project\\output\\clauses.txt",
+  "seed_csv": "C:\\Users\\Your mom\\Documents\\New project\\data\\intent_seed.csv",
+  "seed": 13,
+  "total_examples": 765,
+  "splits": {
+    "train": 536,
+    "dev": 116,
+    "test": 113
+  },
+  "label_counts": {
+    "Obligation": 231,
+    "Prohibition": 179,
+    "Right": 178,
+    "Termination Condition": 177
+  },
+  "label_sources": {
+    "manual_seed": 4,
+    "legal_rule": 115,
+    "tfidf_seed_fallback": 6,
+    "cuad_mapped_category": 640
+  },
+  "cuad": {
+    "path": "C:\\Users\\Your mom\\Documents\\New project\\data\\external\\CUAD_v1\\master_clauses.csv",
+    "status": "loaded",
+    "mapped_categories": 35,
+    "unique_candidate_clauses": 7930,
+    "conflicting_multilabel_clauses_skipped": 74,
+    "candidate_counts": {
+      "Termination Condition": 1176,
+      "Prohibition": 2329,
+      "Right": 1850,
+      "Obligation": 2501
+    },
+    "selected_counts": {
+      "Obligation": 160,
+      "Prohibition": 160,
+      "Right": 160,
+      "Termination Condition": 160
+    },
+    "max_per_label": 160
+  },
+  "note": "This is a silver intent dataset for baseline-vs-transformer comparison. Rows from intent_seed.csv are manual seed labels; local contract clauses are labeled by legal rules with TF-IDF seed fallback; CUAD rows are mapped from expert clause categories into the four assignment intent labels."
+}

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+data/external/
+
+# Generated local training/runtime artifacts. Regenerate with the README commands.
+models/legal_ner/
+models/legal_srl/
+models/legal_srl_legalbert/
+models/legal_intent_legalbert/
