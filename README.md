@@ -1,7 +1,5 @@
 # Legal Contract NLP Homework
 
-Python implementation for Assignments 1 and 2 of the NLP course project, with the optional Assignment 3 QA application:
-
 - Clause splitting
 - Noun phrase chunking with IOB tags
 - Dependency analysis with legal-aware tokenization
